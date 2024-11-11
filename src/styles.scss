@@ -1,9 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@import "tailwindcss/base";
+
+@layer tailwind-base {
+  @import "tailwindcss/base";
+}
+
+@layer tailwind-utilities {
+  @import "tailwindcss/components";
+  @import "tailwindcss/utilities";
+}
 
 :root {
   font-synthesis: none;
@@ -12,7 +21,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
+  background-color: #f9fafb;
 }

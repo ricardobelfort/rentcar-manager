@@ -1,7 +1,59 @@
-<div class="container">
-  <div class="flex justify-center content-center">
-    <p-card [style]="{ width: '25rem' }" header="Simple Card">
-      <p class="m-0">Lorem ipsum dolor sit amet...</p>
-    </p-card>
-  </div>
+<div class="w-full h-full flex justify-center items-center">
+  <p-card [style]="{ width: '400px' }">
+    <ng-template pTemplate="title"> Login </ng-template>
+    <ng-template pTemplate="subtitle"> Entre com seus dados </ng-template>
+    <form [formGroup]="loginForm">
+      <div class="w-full mt-2">
+        <label class="block mb-1" for="email">E-mail</label>
+        <input
+          type="text"
+          class="w-full"
+          pInputText
+          formControlName="email"
+          autocomplete="off"
+          required
+        />
+        @if ((email?.invalid) && (email?.dirty || email?.touched)) {
+        <small class="text-red-500">
+          @if(email?.hasError('required')) { E-mail é obrigatório } 
+          @else if(email?.hasError('pattern')) { E-mail inválido }
+        </small>
+        }
+      </div>
+      <div class="w-full mt-2">
+        <label class="block mb-1" for="password">Senha</label>
+        <p-password
+          class="block"
+          [style]="{ width: '100%' }"
+          [inputStyle]="{ width: '100%' }"
+          formControlName="password"
+          [toggleMask]="true"
+          [feedback]="false"
+          autocomplete="off"
+        />
+        @if (password?.invalid && (password?.dirty || password?.touched)) {
+        <small class="text-red-500">
+          @if(password?.hasError('required')) { Senha é obrigatória } 
+          @else if(password?.hasError('minlength')) { Senha deve ter no mínimo 3
+          caracteres }
+        </small>
+        }
+      </div>
+      <div class="mt-5">
+        <p-button
+          label="Entrar"
+          (click)="onSubmit()"
+          [disabled]="!loginForm.valid"
+          class="w-full"
+          styleClass="w-full"
+        />
+      </div>
+      <p class="mt-3 text-gray-500">
+        Não tem registro?
+        <a routerLink="/register" class="text-gray-500 hover:text-gray-950"
+          >Registrar</a
+        >
+      </p>
+    </form>
+  </p-card>
 </div>

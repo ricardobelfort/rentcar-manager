@@ -1,7 +1,26 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FilterMatchMode, PrimeNGConfig } from 'primeng/api';
+import { definePreset } from 'primeng/themes';
 import { Aura } from 'primeng/themes/aura';
+
+const Noir = definePreset(Aura, {
+  semantic: {
+    primary: {
+      50: '{gray.50}',
+      100: '{gray.100}',
+      200: '{gray.200}',
+      300: '{gray.300}',
+      400: '{gray.400}',
+      500: '{gray.500}',
+      600: '{gray.600}',
+      700: '{gray.700}',
+      800: '{gray.800}',
+      900: '{gray.900}',
+      950: '{gray.950}',
+    },
+  },
+});
 
 @Component({
   selector: 'app-root',
@@ -15,7 +34,10 @@ export class AppComponent {
 
   constructor() {
     this.primeNgConfig.theme.set({
-      preset: Aura,
+      preset: Noir,
+      options: {
+        darkModeSelector: '.dark-mode',
+      },
     });
   }
 
