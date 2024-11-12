@@ -13,6 +13,7 @@
           autocomplete="off"
           required
         />
+
         @if ((email?.invalid) && (email?.dirty || email?.touched)) {
         <small class="text-red-500">
           @if(email?.hasError('required')) { E-mail é obrigatório } 
@@ -20,6 +21,7 @@
         </small>
         }
       </div>
+
       <div class="w-full mt-2">
         <label class="block mb-1" for="password">Senha</label>
         <p-password
@@ -39,6 +41,17 @@
         </small>
         }
       </div>
+
+      <div class="flex items-center gap-2 mt-4">
+        <p-checkbox
+          id="accept"
+          formControlName="rememberMe"
+          name="accept"
+          value="Accept"
+        />
+        <label for="accept">Lembrar meus dados</label>
+      </div>
+
       <div class="mt-5">
         <p-button
           label="Entrar"

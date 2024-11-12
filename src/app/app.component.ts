@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FilterMatchMode, PrimeNGConfig } from 'primeng/api';
+import { FilterMatchMode, MessageService, PrimeNGConfig } from 'primeng/api';
 import { definePreset } from 'primeng/themes';
 import { Aura } from 'primeng/themes/aura';
+import { ToastModule } from 'primeng/toast';
 
 const Noir = definePreset(Aura, {
   semantic: {
@@ -25,9 +26,10 @@ const Noir = definePreset(Aura, {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ToastModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  providers: [MessageService],
 })
 export class AppComponent {
   primeNgConfig = inject(PrimeNGConfig);

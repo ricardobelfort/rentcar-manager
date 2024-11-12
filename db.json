@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "johndoe@gmail.com"
+    },
+    {
+      "id": "4818",
+      "fullName": "ricardo de jesus belfort",
+      "email": "rbelfort2004@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "f9c4",
+      "fullName": "john doe",
+      "email": "johndoe@gmail.com",
+      "password": "1234"
+    }
+  ]
+}

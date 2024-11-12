@@ -12,8 +12,10 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 import { passwordMismatchValidator } from '../../../../shared/password-mismatch.directive';
+import { AuthService } from '../../../../services/auth.service';
+import { registerUser } from '../../../../interfaces/registerUser';
 
 @Component({
   selector: 'app-register',
@@ -27,13 +29,14 @@ import { passwordMismatchValidator } from '../../../../shared/password-mismatch.
     ReactiveFormsModule,
     InputTextModule,
     PasswordModule,
-    ToastModule,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
   private router = inject(Router);
+  private registerService = inject(AuthService);
+  private messageService = inject(MessageService);
 
   registerForm = new FormGroup(
     {
@@ -59,8 +62,27 @@ export class RegisterComponent {
   );
 
   onSubmit() {
-    console.log(this.registerForm.value);
-    this.router.navigate(['/login']);
+    const postData = { ...this.registerForm.value };
+    delete postData.confirmPassword;
+    this.registerService.registerUser(postData as registerUser).subscribe({
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Sucesso',
+          detail: 'Usuário registrado com sucesso',
+        });
+        this.registerForm.reset();
+        this.router.navigate(['/login']);
+      },
+      error: (err) => {
+        console.error(err);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Erro',
+          detail: 'Erro ao registrar usuário',
+        });
+      },
+    });
   }
 
   get fullName() {
