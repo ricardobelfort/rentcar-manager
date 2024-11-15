@@ -100,4 +100,20 @@ export class RegisterComponent {
   get confirmPassword() {
     return this.registerForm.get('confirmPassword');
   }
+
+  hasLowerCase(password: string): boolean {
+    return /[a-z]/.test(password);
+  }
+
+  hasUpperCase(password: string): boolean {
+    return /[A-Z]/.test(password);
+  }
+
+  hasNumber(password: string): boolean {
+    return /[0-9]/.test(password);
+  }
+
+  hasMinLength(password: string): boolean {
+    return password.length >= 8;
+  }
 }

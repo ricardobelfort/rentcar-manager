@@ -16,8 +16,8 @@ import { Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
-import { AutoFocus } from 'primeng/autofocus';
 import { CheckboxModule } from 'primeng/checkbox';
+
 
 @Component({
   selector: 'app-login',
