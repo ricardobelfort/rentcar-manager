@@ -58,28 +58,28 @@ export class LoginComponent {
   onSubmit() {
     const email = this.loginForm.get('email')?.value ?? '';
     const password = this.loginForm.get('password')?.value ?? '';
-    this.authService.getUserDetails(email, password).subscribe({
-      next: (data) => {
-        if (data.length > 1) {
-          localStorage.setItem('email', email);
-          this.router.navigate(['home']);
-        } else {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: 'Credenciais inválidas',
-          });
-        }
-      },
-      error: (error) => {
-        console.error(error);
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Invalid email or password',
-        });
-      },
-    });
+    // this.authService.getUserDetails(email, password).subscribe({
+    //   next: (data) => {
+    //     if (data.length > 1) {
+    //       localStorage.setItem('email', email);
+    //       this.router.navigate(['home']);
+    //     } else {
+    //       this.messageService.add({
+    //         severity: 'error',
+    //         summary: 'Error',
+    //         detail: 'Credenciais inválidas',
+    //       });
+    //     }
+    //   },
+    //   error: (error) => {
+    //     console.error(error);
+    //     this.messageService.add({
+    //       severity: 'error',
+    //       summary: 'Error',
+    //       detail: 'Invalid email or password',
+    //     });
+    //   },
+    // });
     this.router.navigate(['/home']);
   }
 

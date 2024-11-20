@@ -7,7 +7,7 @@
     "baseUrl": "./",
     "paths": {
       "@app/*": ["src/app/*"],
-      "@environments/*": ["src/environments/*"]
+      "@env/*": ["src/environments/*"]
     },
     "strict": true,
     "noImplicitOverride": true,
