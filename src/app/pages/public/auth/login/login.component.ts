@@ -1,4 +1,3 @@
-import { AuthService } from './../../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import {
@@ -17,7 +16,7 @@ import { MessageService } from 'primeng/api';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { CheckboxModule } from 'primeng/checkbox';
-
+import { AuthService } from '@app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -57,7 +56,6 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    console.log(this.loginForm.value);
     const email = this.loginForm.get('email')?.value ?? '';
     const password = this.loginForm.get('password')?.value ?? '';
     this.authService.getUserDetails(email, password).subscribe({

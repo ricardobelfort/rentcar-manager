@@ -62,7 +62,7 @@
         }
 
         <div class="my-4" *ngIf="password?.touched || password?.value">
-          <p>Escolha uma senha</p>
+          <small>Dica de senha</small>
           <p-divider />
           <ul class="pl-2 ml-2 my-0 leading-normal">
             <li [class.text-green-600]="password?.value && hasLowerCase(password?.value ?? '')" class="text-sm list-disc text-red-500">

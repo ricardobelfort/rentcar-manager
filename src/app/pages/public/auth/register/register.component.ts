@@ -13,9 +13,9 @@ import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { MessageService } from 'primeng/api';
-import { passwordMismatchValidator } from '../../../../shared/password-mismatch.directive';
-import { AuthService } from '../../../../services/auth.service';
-import { registerUser } from '../../../../interfaces/registerUser';
+import { passwordMismatchValidator } from '@app/shared/password-mismatch.directive';
+import { registerUser } from '@app/core/interfaces/registerUser';
+import { AuthService } from '@app/core/services/auth.service';
 
 @Component({
   selector: 'app-register',
