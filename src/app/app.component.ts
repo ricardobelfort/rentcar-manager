@@ -27,8 +27,11 @@ const MyTheme = definePreset(Aura, {
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, ToastModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  template: `
+    <router-outlet />
+    <p-toast />
+  `,
+  styles: [],
   providers: [MessageService],
 })
 export class AppComponent {
