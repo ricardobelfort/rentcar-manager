@@ -1,1 +1,33 @@
-<p>veiculos-list works!</p>
+<p-card header="Lista de Veículos">
+  <ng-template *ngIf="veiculos$ | async as veiculos">
+    <p-table [value]="veiculos" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template #header>
+        <tr>
+          <th>#</th>
+          <th>Marca</th>
+          <th>Modelo</th>
+          <th>Placa</th>
+          <th>Cor</th>
+          <th>Quilometragem</th>
+          <th>Combustível</th>
+          <th>Disponível</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-veiculo>
+        <tr>
+          <td>{{ veiculo.id }}</td>
+          <td>{{ veiculo.marca }}</td>
+          <td>{{ veiculo.modelo }}</td>
+          <td>{{ veiculo.placa }}</td>
+          <td>{{ veiculo.cor }}</td>
+          <td>{{ veiculo.quilometragem }}</td>
+          <td>{{ veiculo.tipoCombustivel }}</td>
+          <td>{{ veiculo.disponivel }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </ng-template>
+</p-card>
+<pre class="mt-4">
+  Lista de veículos: {{ veiculos$ | async | json }}
+</pre>
